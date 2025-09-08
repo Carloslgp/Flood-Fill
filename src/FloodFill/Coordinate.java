@@ -16,6 +16,21 @@ public class Coordinate {
         return y;
     }
 
+    public Coordinate getUpperPixel(){
+        return new Coordinate(x, y - 1);
+    }
+
+    public Coordinate getLowerPixel(){
+        return new Coordinate(x, y + 1);
+    }
+
+    public Coordinate getRightPixel(){
+        return new Coordinate(x + 1, y);
+    }
+
+    public Coordinate getLeftPixel(){
+        return new Coordinate(x - 1, y);
+    }
 
 
 

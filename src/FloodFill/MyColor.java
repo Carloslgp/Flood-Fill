@@ -33,9 +33,6 @@ public class MyColor {
             this.blue  = corRGB & 0xff;
 
 
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
