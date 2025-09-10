@@ -21,7 +21,7 @@ public class MyColor {
     public void setCurrentColor(){
         try {
             // Abrindo a imagem
-            this.arquivo = new File("images/Pikachu.png");
+            this.arquivo = new File("images/Pikachu2.png");
             this.image = ImageIO.read(arquivo);
 
             RGB = image.getRGB(coordinate.getX(), coordinate.getY());

@@ -8,8 +8,8 @@ class Main{
 
 
         Color cor = new Color(0, 255, 0); // verde
-        FloodFill floodFill = new FloodFill(435, 275, cor.getRGB());
-        floodFill.EnqueuePixels();
+        FloodFill floodFill = new FloodFill(1, 275, cor.getRGB());
+        floodFill.FillStack();
 
 
 
