@@ -20,7 +20,6 @@ public class MyColor {
 
     public void setCurrentColor(){
         try {
-            // Abrindo a imagem
             this.arquivo = new File("images/Pikachu2.png");
             this.image = ImageIO.read(arquivo);
 
@@ -28,29 +27,13 @@ public class MyColor {
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Erro ao abrir imagem");
         }
     }
 
     public String getColor(){
         return "" + red + green + blue + alpha;
     }
-
-//    public int getRed() {
-//        return red;
-//    }
-//
-//    public int getGreen() {
-//        return green;
-//    }
-//
-//    public int getBlue() {
-//        return blue;
-//    }
-//
-//    public int getAlpha() {
-//        return alpha;
-//    }
 
     public int getRGB(){
         return RGB;

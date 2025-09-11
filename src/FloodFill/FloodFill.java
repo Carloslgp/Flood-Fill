@@ -23,30 +23,44 @@ public class FloodFill {
     }
 
     public void FillQueue(){
+        limparArquivosAntigos();
+        int frameCounter = 0;
+        int saveInterval = 700;
+
+        // cria pasta frames se não existir
+        new File("frames").mkdirs();
+
         queue.enqueue(coordenada);
         int contador = 0;
         while (!queue.isEmpty()) {
             contador++;
-            System.out.println(contador);
             Coordinate coordenadaNew = queue.dequeue();
-            if((verifyColor(coordenadaNew))){
+            if ((verifyColor(coordenadaNew))) {
                 img.setRGB(coordenadaNew.getX(), coordenadaNew.getY(), newColor);
                 coordenada = coordenadaNew;
                 EnqueuePixels();
-            }else{
-                continue;
             }
-
+            // salva frames intermediários
+            if (contador % saveInterval == 0) {
+                try {
+                    String filename = String.format("frames/frame_%04d.png", frameCounter++);
+                    ImageIO.write(img, "png", new File(filename));
+                } catch (Exception e) {
+                    System.out.println("Erro ao salvar frame");
+                }
+            }
         }
-        try {
-            ImageIO.write(img, "png", new File("edited_pikachu.png"));
-        }catch (Exception e){
-            System.out.println("Erro ao salvar imagem");
-        }
+        generateAnimation(frameCounter);
 
     }
 
     public void FillStack(){
+        limparArquivosAntigos();
+        int frameCounter = 0;
+        int saveInterval = 700;
+
+        new File("frames").mkdirs();
+
         stack.push(coordenada);
         int contador = 0;
         while (!stack.isEmpty()) {
@@ -58,12 +72,54 @@ public class FloodFill {
                 coordenada = coordenadaNew;
                 StackPixels();
             }
+            if (contador % saveInterval == 0) {
+                try {
+                    String filename = String.format("frames/frame_%04d.png", frameCounter++);
+                    ImageIO.write(img, "png", new File(filename));
+                } catch (Exception e) {
+                    System.out.println("Erro ao salvar frame");
+                }
+            }
         }
+        generateAnimation(frameCounter);
+
+    }
+
+    private void generateAnimation(int frameCounter){
+        // salva último frame
         try {
-            ImageIO.write(img, "png", new File("edited_pikachu.png"));
-        }catch (Exception e){
-            System.out.println("Erro ao salvar imagem");
+            String filename = String.format("frames/frame_%04d.png", frameCounter++);
+            ImageIO.write(img, "png", new File(filename));
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar último frame");
         }
+        // roda o ffmpeg para gerar animação
+        try {
+            String cmdVideo = "ffmpeg -framerate 100 -i frames/frame_%04d.png -pix_fmt yuv420p -y animacao.mp4";
+
+            Runtime.getRuntime().exec(cmdVideo).waitFor();
+
+            System.out.println("Vídeo gerado!");
+        } catch (Exception e) {
+            System.out.println("Erro ao gerar animação: " + e.getMessage());
+        }
+    }
+
+    private void limparArquivosAntigos() {
+        // Apaga os frames antigos
+        File framesDir = new File("frames");
+        if (framesDir.exists() && framesDir.isDirectory()) {
+            File[] files = framesDir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    file.delete();
+                }
+            }
+        }
+
+        // Apaga o vídeo e o GIF antigos
+        new File("animacao.mp4").delete();
+        new File("animacao.gif").delete(); // <-- Comando para apagar o GIF
     }
 
 
