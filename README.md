@@ -8,7 +8,7 @@ O Flood Fill é um algoritmo que determina e altera a cor de uma área conectada
 
 O projeto inclui implementações próprias das estruturas de dados de Fila e Pilha, conforme os requisitos do trabalho acadêmico.
 
-![Animacaoo do Flood Fill](https://imgur.com/a/CuQZp4i.gif)
+![Animação do Flood Fill](https://i.imgur.com/8z2Jt2g.gif)
 
 
 ## Como Executar
