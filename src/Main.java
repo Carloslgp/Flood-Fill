@@ -8,7 +8,7 @@ class Main{
 
         FloodFill floodFill2 = new FloodFill(450, 300, amarelo.getRGB());
 
-        floodFill2.FillQueue();
+        floodFill2.FillStack();
     }
 }
 
