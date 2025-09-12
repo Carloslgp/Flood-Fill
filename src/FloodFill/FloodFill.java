@@ -27,7 +27,6 @@ public class FloodFill {
         int frameCounter = 0;
         int saveInterval = 700;
 
-        // cria pasta frames se não existir
         new File("frames").mkdirs();
 
         queue.enqueue(coordenada);
@@ -40,7 +39,6 @@ public class FloodFill {
                 coordenada = coordenadaNew;
                 EnqueuePixels();
             }
-            // salva frames intermediários
             if (contador % saveInterval == 0) {
                 try {
                     String filename = String.format("frames/frame_%04d.png", frameCounter++);
@@ -86,14 +84,12 @@ public class FloodFill {
     }
 
     private void generateAnimation(int frameCounter){
-        // salva último frame
         try {
             String filename = String.format("frames/frame_%04d.png", frameCounter++);
             ImageIO.write(img, "png", new File(filename));
         } catch (Exception e) {
             System.out.println("Erro ao salvar último frame");
         }
-        // roda o ffmpeg para gerar animação
         try {
             String cmdVideo = "ffmpeg -framerate 100 -i frames/frame_%04d.png -pix_fmt yuv420p -y animacao.mp4";
 
@@ -106,7 +102,6 @@ public class FloodFill {
     }
 
     private void limparArquivosAntigos() {
-        // Apaga os frames antigos
         File framesDir = new File("frames");
         if (framesDir.exists() && framesDir.isDirectory()) {
             File[] files = framesDir.listFiles();
@@ -117,9 +112,7 @@ public class FloodFill {
             }
         }
 
-        // Apaga o vídeo e o GIF antigos
         new File("animacao.mp4").delete();
-        new File("animacao.gif").delete(); // <-- Comando para apagar o GIF
     }
 
 
