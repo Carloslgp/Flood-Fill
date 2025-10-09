@@ -1,15 +1,15 @@
 import FloodFill.*;
 
+import javax.xml.transform.Source;
+import java.awt.*;
+
 class Main{
     public static void main(String[] args) {
-        Coordinate coordinate = new Coordinate(435, 276);
-        MyColor color = new MyColor(coordinate);
-        color.setCurrentColor();
 
-        System.out.println(color.getRed());
-        System.out.println(color.getGreen());
-        System.out.println(color.getBlue());
-        System.out.println(color.getAlpha());
+
+        Color cor = new Color(0, 255, 0); // verde
+        FloodFill floodFill = new FloodFill(435, 275, cor.getRGB());
+        floodFill.EnqueuePixels();
 
 
 

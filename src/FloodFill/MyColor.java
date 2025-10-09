@@ -1,18 +1,18 @@
 package FloodFill;
+import java.awt.*;
 import java.io.File;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
-
-
 public class MyColor {
     Coordinate coordinate;
-
-
     int red;
     int green;
     int blue;
     int alpha;
+    int RGB;
+    File arquivo;
+    BufferedImage image;
 
     public MyColor(Coordinate coordinate) {
         this.coordinate = coordinate;
@@ -21,16 +21,10 @@ public class MyColor {
     public void setCurrentColor(){
         try {
             // Abrindo a imagem
-            File arquivo = new File("images/Pikachu.png");
-            BufferedImage img = ImageIO.read(arquivo);
+            this.arquivo = new File("images/Pikachu.png");
+            this.image = ImageIO.read(arquivo);
 
-            int corRGB = img.getRGB(coordinate.getX(), coordinate.getY());
-
-            // Quebrando os canais manualmente
-            this.alpha = (corRGB >> 24) & 0xff;
-            this.red   = (corRGB >> 16) & 0xff;
-            this.green = (corRGB >> 8) & 0xff;
-            this.blue  = corRGB & 0xff;
+            RGB = image.getRGB(coordinate.getX(), coordinate.getY());
 
 
         } catch (Exception e) {
@@ -38,23 +32,33 @@ public class MyColor {
         }
     }
 
-    public int getRed() {
-        return red;
+    public String getColor(){
+        return "" + red + green + blue + alpha;
     }
 
-    public int getGreen() {
-        return green;
+//    public int getRed() {
+//        return red;
+//    }
+//
+//    public int getGreen() {
+//        return green;
+//    }
+//
+//    public int getBlue() {
+//        return blue;
+//    }
+//
+//    public int getAlpha() {
+//        return alpha;
+//    }
+
+    public int getRGB(){
+        return RGB;
     }
 
-    public int getBlue() {
-        return blue;
+    public BufferedImage getImage() {
+        return image;
     }
-
-    public int getAlpha() {
-        return alpha;
-    }
-
-
 
 
 }
