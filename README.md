@@ -1,56 +1,56 @@
-# Implementação do Algoritmo Flood Fill em Java
+# Flood Fill Algorithm Implementation in Java
 
-Este repositório contém uma implementação do algoritmo Flood Fill, desenvolvida como parte da disciplina de Resolução de Problemas Estruturados em Computação. O projeto demonstra o preenchimento de uma área em uma imagem a partir de um ponto inicial, utilizando estruturas de dados de Fila e Pilha para gerenciar os pixels a serem processados.
+This repository contains an implementation of the Flood Fill algorithm, developed as part of the Structured Problem Solving in Computing course. The project demonstrates filling an area of an image starting from a seed point, using Queue and Stack data structures to manage the pixels to be processed.
 
-## Visão Geral
+## Overview
 
-O Flood Fill é um algoritmo que determina e altera a cor de uma área conectada de pixels em uma imagem. Esta implementação foi projetada para colorir uma imagem PNG com cores sólidas, gerando uma animação do processo de preenchimento.
+Flood Fill is an algorithm that determines and changes the color of a connected area of pixels in an image. This implementation was designed to fill a PNG image with solid colors, generating an animation of the filling process.
 
-O projeto inclui implementações próprias das estruturas de dados de Fila e Pilha, conforme os requisitos do trabalho acadêmico.
+The project includes custom implementations of the Queue and Stack data structures, as required by the coursework.
 
-![Animação do Flood Fill](https://imgur.com/a/CuQZp4i)
+![Flood Fill animation](https://imgur.com/a/CuQZp4i)
 
+## How to Run
 
-## Como Executar
+### Prerequisites
 
-### Pré-requisitos
-* **Java Development Kit (JDK)** instalado.
-* **(Opcional) FFmpeg** para gerar a animação em vídeo a partir dos frames.
+* **Java Development Kit (JDK)** installed.
+* **(Optional) FFmpeg** to generate a video animation from the frames.
 
-### Passos para Execução
+### Running the Project
 
-1.  **Clone o repositório:**
+1.  **Clone the repository:**
     ```bash
-    git clone <URL_DO_REPOSITORIO>
-    cd <NOME_DO_DIRETORIO>
+    git clone <REPOSITORY_URL>
+    cd <DIRECTORY_NAME>
     ```
 
-2.  **Compile os arquivos Java:**
-    A partir do diretório raiz do projeto, execute o comando:
+2.  **Compile the Java files:**
+    From the project root directory, run:
     ```bash
     javac -d . src/Main.java src/FloodFill/*.java src/Queue/*.java src/Stack/*.java
     ```
 
-3.  **Execute o programa:**
+3.  **Run the program:**
     ```bash
     java Main
     ```
-    O programa começará a processar a imagem e a salvar os frames na pasta `frames/`.
+    The program will start processing the image and saving the frames into the `frames/` folder.
 
-### Como Mudar o Algoritmo (Fila vs. Pilha)
+### Switching the Algorithm (Queue vs. Stack)
 
-Para alternar entre a Fila e a Pilha, edite o arquivo `src/Main.java` e altere a chamada do método:
+To switch between Queue and Stack, edit `src/Main.java` and change the method call:
 
-* **Para usar a Fila (padrão):**
+* **To use the Queue (default):**
     ```java
     floodFill2.FillQueue();
     ```
 
-* **Para usar a Pilha:**
+* **To use the Stack:**
     ```java
     floodFill2.FillStack();
     ```
 
-### Gerando a Animação
+### Generating the Animation
 
-Após a execução do programa, a pasta `frames/` conterá todas as imagens geradas.
+After running the program, the `frames/` folder will contain all the generated images.
