@@ -8,7 +8,7 @@ Flood Fill is an algorithm that determines and changes the color of a connected 
 
 The project includes custom implementations of the Queue and Stack data structures, as required by the coursework.
 
-![Flood Fill animation](https://imgur.com/a/CuQZp4i)
+![Flood Fill animation](animacao.gif)
 
 ## How to Run
 
